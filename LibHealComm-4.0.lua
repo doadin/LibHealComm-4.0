@@ -1,5 +1,5 @@
 local major = "LibHealComm-4.0"
-local minor = 110
+local minor = 111
 assert(LibStub, format("%s requires LibStub.", major))
 
 local HealComm = LibStub:NewLibrary(major, minor)
@@ -815,7 +815,7 @@ local function getBaseHealAmount(spellData, spellName, spellID, spellRank)
 	if type(average) == "number" then
 		return average
 	end
-	local requiresLevel = spellData.levels[spellRank]
+	local requiresLevel = spellData.levels[spellRank] or 0
 	return average[min(playerLevel - requiresLevel + 1, #average)]
 end
 
